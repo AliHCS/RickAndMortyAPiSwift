@@ -63,7 +63,10 @@ extension ViewController: UITableViewDataSourcePrefetching {
             restClient.show("/api/character/", queryParams: queryPaginate) { response in
                 self.characters?.append(contentsOf: response.results)
             }
-            queryPaginate = ["page":"\(currentPage += 1)"]
+            currentPage += 1
+            queryPaginate["page"] = "\(currentPage)"
+            print(queryPaginate)
+            print(currentPage)
         }
     }
 }
